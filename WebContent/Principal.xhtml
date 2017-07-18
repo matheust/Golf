@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<h:form>
+
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Nome" />
+			<h:inputText value="#{clienteBean.cliente.nome}" />
+			<h:commandButton value="Salvar" action="#{clienteBean.salvar}" />
+			<h:commandButton value="Limpar" />
+		</h:panelGrid>
+
+		<h:dataTable border="1" value="#{clienteBean.clientes}" var="clientes">
+			<h:column>
+				<h:commandLink style="text-decoration: none; color:#000;"
+					action="#{clienteBean.selecionar(clientes)}">
+					<h:outputText value="#{clientes.nome}" />
+				</h:commandLink>
+			</h:column>
+
+			<h:column>
+				<h:commandLink style="text-decoration: none; color:#000;"
+					action="#{clienteBean.ecluir(clientes)}">
+					<h:outputText value="Excluir" />
+				</h:commandLink>
+			</h:column>
+
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
